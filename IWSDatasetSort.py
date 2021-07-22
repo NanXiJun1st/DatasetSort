@@ -10,7 +10,7 @@ import re
 from openpyxl.reader.excel import load_workbook
 
 sg.theme('DarkAmber')
-def ChooseFolder(*args):
+def GUI(*args):
     frame_layout = [ [sg.Listbox(values=['胶质瘤85例已标注','脑膜瘤103例已标注','脑膜瘤110例未标注'],size=(30,7))]]
     layout = [[sg.Text('IWSDataset')], 
               [sg.Text('根目录',size=(15,1),key='-Folder-'),sg.InputText(key='-SourcePath-'),sg.FolderBrowse('FolderBrowse', size=(10,1))],
@@ -80,4 +80,4 @@ def ReadXlsxFile(path=None,UntaggedDiseazeName=None,TaggedDiseazeName=None,logDa
             if enableCopy:
                 folderName = '/' + sheet['A'+str(i.row)].value
                 shutil.copytree(sourcePath +folderName,targetPath+folderName)
-ChooseFolder()
+GUI()
